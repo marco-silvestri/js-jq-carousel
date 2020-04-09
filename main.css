@@ -1,0 +1,19 @@
+.app{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.app__btn{
+    align-self: center;
+    cursor: pointer;
+    font-size: 56px;
+}
+
+.app__img{
+    display: none; /* jQuery */
+}
+
+.first {
+    display: inline-block;
+}
