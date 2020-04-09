@@ -2,25 +2,33 @@ $(document).ready(function () {
     var buttonPrev = $('#prev');
     var buttonNext = $('#next');
     var currentImg = $('.app__img.active');
-    
-    buttonPrev.click(function () { 
-        if (currentImg == $('.gallery').first('img')){
-            currentImg = $('.gallery').last('img');
-        }
-        currentImg.prev().addClass('active');
-        currentImg.removeClass('active');
-        currentImg = $('.app__img.active');
-        console.log(currentImg);
+
+    var firstImg = $('.app__img').first();
+    var lastImg = $('.app__img').last();
+
+    firstImg.addClass('first');
+    lastImg.addClass('last');
+
+    buttonPrev.click(function () {
+        goBack();
+        
     });
 
     buttonNext.click(function () {
-        if (currentImg == $('.gallery').last('img')){
-            currentImg = $('.gallery').first('img');
-        } 
-        currentImg.next().addClass('active');
-        currentImg.removeClass('active');
-        currentImg = $('.app__img.active');
+        goForw(); 
+
     });
+
+    $(document).keydown(function(e) {
+        switch (e.keyCode) {
+            case 37:
+                goBack()
+                break
+            case 39:
+                goForw()
+                break
+        }
+    })
 
     currentImg.click(function () { 
         console.log($(this));
@@ -29,6 +37,34 @@ $(document).ready(function () {
     });
 
 
+
+    function goBack(){
+        if (currentImg.hasClass('first')) {
+            lastImg.addClass('active');
+            currentImg.removeClass('active');
+            currentImg = $('.app__img.active');
+        } else {
+            currentImg.prev().addClass('active');
+            currentImg.removeClass('active');
+            currentImg = $('.app__img.active');
+        }
+        
+    
+    };
+
+    function goForw(){
+        if (currentImg.hasClass('last')) {
+            firstImg.addClass('active');
+            currentImg.removeClass('active');
+            currentImg = $('.app__img.active');
+        } else {
+            currentImg.next().addClass('active');
+            currentImg.removeClass('active');
+            currentImg = $('.app__img.active');
+        }
+
+
+    };
 
 
     
