@@ -17,3 +17,30 @@
 .active {
     display: inline-block;
 }
+
+.app__gallery{
+    position: relative;
+}
+
+#app__radio-area {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    height: 30px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0,0,0, .5);
+}
+
+.app__radio-area__meta-radio {
+    height: 20px;
+    width: 20px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    background-color: #ffffff;
+}
+
+.meta-radio--selected {
+    background-color: #fed689;
+}
