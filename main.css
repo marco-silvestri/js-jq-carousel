@@ -11,7 +11,7 @@
 }
 
 .app__img{
-    display: none; /* jQuery */
+    display: none;
 }
 
 .active {

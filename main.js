@@ -1,22 +1,25 @@
 $(document).ready(function () {
-    var buttonPrev = $('.app__img').prev();
-    var buttonNext = $('.app__img').next();
-    var currentImg = $('.app__img').has('active');
+    var buttonPrev = $('#prev');
+    var buttonNext = $('#next');
+    var currentImg = $('.app__img.active');
     
     buttonPrev.click(function () { 
-        console.log($(this));
-        currentImg.next().addClass('active');
-        currentImg.removeClass('active');
-        
-        
-    });
-
-    buttonNext.click(function () { 
-        console.log($(this));
+        if (currentImg == $('.gallery').first('img')){
+            currentImg = $('.gallery').last('img');
+        }
         currentImg.prev().addClass('active');
         currentImg.removeClass('active');
-        
-        
+        currentImg = $('.app__img.active');
+        console.log(currentImg);
+    });
+
+    buttonNext.click(function () {
+        if (currentImg == $('.gallery').last('img')){
+            currentImg = $('.gallery').first('img');
+        } 
+        currentImg.next().addClass('active');
+        currentImg.removeClass('active');
+        currentImg = $('.app__img.active');
     });
 
     currentImg.click(function () { 
@@ -28,7 +31,7 @@ $(document).ready(function () {
 
 
 
-
+    
 
 
 
