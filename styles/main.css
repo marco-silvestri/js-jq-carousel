@@ -1,0 +1,105 @@
+/* Reset */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Typography */
+
+body {
+    font-family: 'Amatic SC', cursive;
+    background-color: #85dcb8;
+}
+
+h1 {
+    color: #e2945f;
+    font-size: 72px;
+    text-align: center;
+}
+
+.credits {
+    font-size: 24px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+/* Wrappers */
+
+.app {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.app__gallery {
+    position: relative;
+}
+
+.app__img {
+    display: none; /* jQuery*/
+}
+
+
+/* Arrows */
+
+.app__btn {
+    align-self: center;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 72px;
+    color: #c38d9e;
+}
+
+.app__btn:hover {
+    color: #e2945f;
+}
+
+/* Radios */
+
+#app__radio-area {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(0,0,0, .45);
+}
+
+.app__radio-area__meta-radio {
+    cursor: pointer;
+    color: #41a3b3;
+    font-size: 36px;
+}
+
+.meta-radio--selected {
+    color: #c38d9e;
+    animation: rotate 600ms 1 forwards;
+}
+
+.app__radio-area__meta-radio i:hover {
+    color: #e27d60;
+    zoom: .8;
+}
+
+.active {
+    display: inline-block;
+}
+
+/* Animations */
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    75%{
+        transform: rotate(200deg);
+    }
+    100%{
+        transform: rotate(180deg);
+    }
+}

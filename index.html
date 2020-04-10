@@ -3,25 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="main.css">
+    <!-- Font Awesome 5.0 -->
+    <link rel="stylesheet" href="styles/all.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="main.js"></script>
-    
-    <title>Petty Carousel</title>
+    <script src="script/main.js"></script>
+    <title>The Sweetest Carousel - Marco Silvestri 2020</title>
 </head>
 <body>
+    <h1>
+        The sweetest Carousel
+    </h1>
+    <!-- Main wrapper -->
     <div class="app">
         <div id="prev" class="app__btn">
             <i class="fas fa-chevron-circle-left"></i>
         </div>
         <div class="app__gallery">
-            <div class="frame"><img src="https://loremflickr.com/600/600/paris" alt="" class="app__img active">
-                <img src="https://loremflickr.com/600/600/rome" alt="" class="app__img">
-                <img src="https://loremflickr.com/600/600/rio" alt="" class="app__img">
-                <img src="https://loremflickr.com/600/600/tokyo" alt="" class="app__img">
-                <img src="https://loremflickr.com/600/600/berlin" alt="" class="app__img">
-                <img src="https://loremflickr.com/600/600/milan" alt="" class="app__img">
+            <!-- Images wrapper -->
+            <div class="frame">
+                <img src="https://i.picsum.photos/id/270/1200/600.jpg" alt="" class="app__img active">
+                <img src="https://i.picsum.photos/id/271/1200/600.jpg" alt="" class="app__img">
+                <img src="https://i.picsum.photos/id/272/1200/600.jpg" alt="" class="app__img">
+                <img src="https://i.picsum.photos/id/273/1200/600.jpg" alt="" class="app__img">
+                <img src="https://i.picsum.photos/id/274/1200/600.jpg" alt="" class="app__img">
+                <img src="https://i.picsum.photos/id/275/1200/600.jpg" alt="" class="app__img">
             </div>
             <div id="app__radio-area">
             </div>    
@@ -30,5 +40,8 @@
             <i class="fas fa-chevron-circle-right"></i>
         </div>    
     </div>
+    <footer>
+        <h4 class="credits">The sweetest Carousel Live DEMO - Marco Silvestri 2020</h4>
+    </footer>
 </body>
 </html>
