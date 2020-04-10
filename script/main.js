@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 // References
 
-    var buttonPrev = $('#prev');
+    var buttonPrevious = $('#prev');
     var buttonNext = $('#next');
     var currentImg = $('.app__img.active');
     var firstImg = $('.app__img').first();
@@ -40,8 +40,8 @@ $(document).ready(function () {
     firstMetaRadio.addClass('first meta-radio--selected');
     lastMetaRadio.addClass('last');
 
-    var activeRadio = $('.app__radio-area__meta-radio.meta-radio--selected');
-    var radio = $('.app__radio-area__meta-radio');
+    var activeMetaRadio = $('.app__radio-area__meta-radio.meta-radio--selected');
+    var metaRadio = $('.app__radio-area__meta-radio');
 
 // Establish the first and the last img with a class
 
@@ -50,98 +50,92 @@ $(document).ready(function () {
 
 // Picture change
 
-    buttonPrev.click(function () {
-        goBack();
-        
-    });
-
-    buttonNext.click(function () {
-        goForw(); 
-
-    });
+    buttonPrevious.click(showPrevious);   
+    buttonNext.click(showNext); 
 
 // Keyboard controls
 
     $(document).keydown(function(e) {
         switch (e.keyCode) {
-            case 37:
-                goBack()
+            case 37: // Arrow LEFT
+                showPrevious()
                 break
-            case 38:
-                if (currentImg.hasClass('first') != true && activeRadio.hasClass('first') != true) {
-                    iAmTheFirst();
+            case 38: // Arrow UP
+                if (currentImg.hasClass('first') != true && activeMetaRadio.hasClass('first') != true) {
+                    showFirst();
                 }
                 break
-            case 39:
-                goForw()
+            case 39: // Arrow RIGHT
+                showNext()
                 break
-            case 40:
-                if (currentImg.hasClass('last') != true && activeRadio.hasClass('last') != true) {
-                    iAmTheLast();
+            case 40: // Arrow DOWN
+                if (currentImg.hasClass('last') != true && activeMetaRadio.hasClass('last') != true) {
+                    showLast();
                 }
                 break
         }
     });
     
-    radio.click(function () { 
-        // TODO Implement it in an external function
-        var dotReference = ($(this).attr('data-number'));
-        activeRadio.removeClass('meta-radio--selected');
-        $(this).addClass('meta-radio--selected');
-        activeRadio = $(this);
-        currentImg.removeClass('active');
-        var linkedImg = $( "img[data-number="+dotReference+"]" );
-        linkedImg.addClass('active');
-        currentImg = $('.app__img.active');
+    metaRadio.click(function () { 
+        createReferenceToImage($(this));
     });
 
 // Functions
 
-    function metaRadioReAssign(){
-        activeRadio.removeClass('meta-radio--selected');
-        activeRadio = $('.app__radio-area__meta-radio.meta-radio--selected');
+    function createReferenceToImage(dataNumber) {
+        var metaRadioReference = (dataNumber.attr('data-number'));
+        var linkedImg = $( "img[data-number=" + metaRadioReference + "]" );
+        activeMetaRadio.removeClass('meta-radio--selected');
+        dataNumber.addClass('meta-radio--selected');
+        activeMetaRadio = dataNumber;
+        currentImg.removeClass('active');
+        linkedImg.addClass('active');
+        currentImg = $('.app__img.active');
     };
 
-    function imgReAssign(){
+    function metaRadioReAssign(){
+        activeMetaRadio.removeClass('meta-radio--selected');
+        activeMetaRadio = $('.app__radio-area__meta-radio.meta-radio--selected');
+    };
+
+    function resetImaginePosition(){
         currentImg.removeClass('active');
         currentImg = $('.app__img.active');
     };
 
-    function goBack(){
-        if (currentImg.hasClass('first') && activeRadio.hasClass('first')) {
-            iAmTheLast();
+    function showPrevious(){ //non vanno
+        if (currentImg.hasClass('first') && activeMetaRadio.hasClass('first')) {
+            showLast();
         } else {
             currentImg.prev().addClass('active');
-            imgReAssign();
-            activeRadio.prev().addClass('meta-radio--selected');
+            resetImaginePosition();
+            activeMetaRadio.prev().addClass('meta-radio--selected');
             metaRadioReAssign();
         }
     };
 
-    function goForw(){
-        if (currentImg.hasClass('last') && activeRadio.hasClass('last')) {
-            iAmTheFirst();
+    function showNext(){
+        if (currentImg.hasClass('last') && activeMetaRadio.hasClass('last')) {
+            showFirst();
         } else {
             currentImg.next().addClass('active');
-            imgReAssign();
-            activeRadio.next().addClass('meta-radio--selected');
+            resetImaginePosition();
+            activeMetaRadio.next().addClass('meta-radio--selected');
             metaRadioReAssign();
         }
     };
 
-    function iAmTheLast(){
-        lastImg.addClass('active');
-        imgReAssign();
-        lastMetaRadio.addClass('meta-radio--selected');
-        metaRadioReAssign();
-    };
-
-    function iAmTheFirst(){
+    function showFirst(){
         firstImg.addClass('active');
-        imgReAssign();
+        resetImaginePosition();
         firstMetaRadio.addClass('meta-radio--selected');
         metaRadioReAssign();
     };
 
-    
+    function showLast(){
+        lastImg.addClass('active');
+        resetImaginePosition();
+        lastMetaRadio.addClass('meta-radio--selected');
+        metaRadioReAssign();
+    };    
 });
